@@ -1,11 +1,11 @@
 <template>
-  <van-tabbar v-model="active" class="active_tab">
+  <van-tabbar :value="value" class="active_tab">
     <van-tabbar-item
       v-for="(item,index) in tabbars"
       :key="index"
       @click="tab(index,item.name)"
     >
-      <span :class="currIndex == index ? active:''">{{item.title}}</span>
+      <span :class="currIndex == index ? 'active':''">{{item.title}}</span>
       <template slot="icon" slot-scope="props">
         <img :src="props.active ? item.active : item.normal">
       </template>
@@ -16,10 +16,14 @@
 <script>
 export default {
   name: "tabbar",
+  props:{
+    value:{
+      type:Number
+    }
+  },
   data() {
     return {
       currIndex: 0,
-      active: 0,
       tabbars: [
         {
           name: "management",
