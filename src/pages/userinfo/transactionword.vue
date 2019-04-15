@@ -1,38 +1,34 @@
 <template>
-    <div class="container">
-      <navBar :title="title" :right-text="title">
-        <van-icon name="search" slot="right" />
-      </navBar>
-       <div class="user">
-          <div class="user_con">
-              <div class="user_con_item">
-                  <div class="con_item_l"><input type="text" placeholder=" 输入原6位交易密码"></div>
-              </div>
-              <div class="user_con_item">
-                  <div class="con_item_l"><input type="text" placeholder=" 输入新的6位交易密码"></div>
-              </div>
-               <div class="user_con_item user_con_item_active">
-                  <div class="con_item_l"><input type="text" placeholder=" 确认新的交易密码"></div>
-              </div>
-             
+  <div class="container">
+    <navBar :title="title" :right-text="title">
+      <van-icon name="search" slot="right"/>
+    </navBar>
+    <div class="user">
+      <div class="user_con">
+        <div class="user_con_item">
+          <div class="con_item_l">
+            <input type="text" placeholder=" 输入原6位交易密码">
           </div>
+        </div>
+        <div class="user_con_item">
+          <div class="con_item_l">
+            <input type="text" placeholder=" 输入新的6位交易密码">
+          </div>
+        </div>
+        <div class="user_con_item user_con_item_active">
+          <div class="con_item_l">
+            <input type="text" placeholder=" 确认新的交易密码">
+          </div>
+        </div>
+      </div>
 
-          
-            <div class="introduction_start" @click="goLink()">修改完成</div>
-
-       </div>
-        <van-tabbar v-model="active">
-            <van-tabbar-item icon="home-o" to='management'>矿机管理</van-tabbar-item>
-            <van-tabbar-item icon="search" to='minemachine'>我的收益</van-tabbar-item>
-            <van-tabbar-item icon="setting-o" to='usercenter'>个人中心</van-tabbar-item>
-        </van-tabbar>
-        
+      <div class="introduction_start" @click="goLink()">修改完成</div>
     </div>
+  </div>
 </template>
 
 <script>
-import navBar from "../../components/barBarActive";
-import { Tabbar, TabbarItem } from "vant";
+import navBar from "../../components/navBar";
 
 export default {
   data() {

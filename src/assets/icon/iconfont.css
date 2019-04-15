@@ -1,0 +1,30 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1555299112134'); /* IE9 */
+  src: url('iconfont.eot?t=1555299112134#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMMAAsAAAAABtgAAAK9AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqBWIFYATYCJAMICwYABCAFhG0HORsHBsiemjyBAgokyIb7AAASxMP/r7X7/vzZnTVNqEW6Z9FGJdFIAU4ndUolJC9hDnXmmR6cZ9ATBbcHLNCE4CiS45BSRS5NxLR1BeS1nb5zqtK3EDt94t5pEyiQ+YByXHvzpy7AbEwNaG+MukACLJDQW9RLU1wazNsE2pa0k85HTZgMaTJrUSCeLdOAtJxflkWqEho1OzPEG2iqtF5+AuA1/H78gzfSQFIWYFVcPY0MQP9Xlp2hLEsuM9snQQAE3F+iwAGQibva+AVFCIaiHVetgX2VBl9Zydo3ir3qhPjrrOIuWCD8exK4wlstTiCTwTPgcdSbkIc5tVI06927qdr799Oy376dor55s/TOG6Qefzsy+/77Ou3Eu1EzYLeNeyVp+YVGfcOuZbuLHZOn7jlTMHnX/t2ni6dN8UYkPcYHxtJ4cBowHi/lKutvt6ARI2RIaEYQr8jXN+lfC786Lhfe6r/sgFf92+bVy0NtNx0eHhVPc8jvX4fTfvPPH+gHqJ8qNxXfn/2N97oyL7v7f5pDBfj8VNEceuunKvRzgur8juA/CnpWZSWyVOmK+OhIzjI5EtrKpQbLPfZtrHp20+lQmd26s2kxRaGyQc70A5Q6DtFQOULbvtH7OyY4ReR0YM9qQBi6iqTvA4Whp+RM/4rS3F80DENB20Pkn9ixFZY+xIkhSAD5lyALsxh1TEKPSicS044YPCsKmVMJT1gh5HG6i6nRJEb4HGsSC02vEBRRzqJoFNxHIhGG4pyFCBbOoBDxTpeL1j3JiVkUdGc4wiAQAYjfEogFY2KoX1/QS5+fiDDZIgy8hVDyTkVwCdbwiIeTuwd5tDzWi3AvjyQsZPISBAqhOCYKGQVWImLHGSRePy2EwASn4IhoXCcX1qJ95c71ldGv2wZtliaFfZECg5cgs5dYC6x5QdvwGzEAAAAA') format('woff2'),
+  url('iconfont.woff?t=1555299112134') format('woff'),
+  url('iconfont.ttf?t=1555299112134') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1555299112134#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-myiconshouyiqi_huaban:before {
+  content: "\e60e";
+}
+
+[class^="icon-myicon"], [class*=" icon-myicon"] {
+  font-family:"iconfont-myicon" !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size: 18px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

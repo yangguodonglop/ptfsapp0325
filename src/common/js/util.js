@@ -1,12 +1,11 @@
-//试着REM
+// 试着REM
 export default function () {
-
   fnResize()
   window.onresize = function () {
     fnResize()
   }
 
-  function fnResize() {
+  function fnResize () {
     var deviceWidth = document.documentElement.clientWidth || window.innerWidth
     if (deviceWidth >= 750) {
       deviceWidth = 750
@@ -15,7 +14,5 @@ export default function () {
       deviceWidth = 320
     }
     document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'
- 
   }
 }
-

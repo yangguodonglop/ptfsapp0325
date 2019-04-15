@@ -1,17 +1,25 @@
 <template>
-    <div class="container">
-         <navBar :title="title"></navBar>
-         
-        <div class="container_introduction">
+  <div class="container">
+    <navBar :title="title"></navBar>
+      <div class="container_introduction">
             <div class="introduction_text">
                 <div class="login_input">
-                    <input type="text"  placeholder="请输入矿主名称" v-model="userName">
+                    <input type="text" v-model="userName" placeholder="请输入用户名称">
                 </div>
+                 <div class="introduction_start" @click="getNext()">完成</div> 
             </div>
-            <div class="introduction_start" @click="getNext()">完成</div>
+          
         </div>
-        
-    </div>
+
+    <!-- <div class="container_introduction">
+      <div class="introduction_text">
+        <div class="login_input">
+          <input type="text" placeholder="请输入矿主名称" v-model="userName">
+        </div>
+      </div>
+      <div class="introduction_start" @click="getNext()">完成</div>
+    </div> -->
+  </div>
 </template>
 
 <script>
@@ -22,7 +30,7 @@ import { setUserName } from "../../common/js/api.js";
 export default {
   data() {
     return {
-      title: "矿主名称",
+      title: "完善个人信息",
       userName: ""
     };
   },
@@ -42,7 +50,8 @@ export default {
       }
       let param = new Object();
       param.userName = this.userName;
-      setUserName(param) .then(response => {
+      setUserName(param)
+        .then(response => {
           console.log(response);
           let { result } = response;
           if ((result = "ok")) {
@@ -70,45 +79,57 @@ export default {
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
-  background: #f2f2f2;
+  background: #222a45;
   .container_introduction {
     width: 100%;
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
-    background: #f2f2f2;
+    background: #222a45;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     .introduction_text {
       font-size: 0.4rem;
       color: #cccccc;
-      margin-top: 2.5rem;
+      width: 6.9rem;
+      height: 6.4rem;
+      background: rgba(41, 50, 83, 1);
+      border-radius: 0.12rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+
       .login_input {
         input {
           border: none;
           color: #cccccc;
-          background: #f2f2f2;
+          background: none;
+          text-align: center;
           outline: none;
-          border-bottom: #cccccc 1px solid;
+          border-bottom: #38446f 1px solid;
           padding-bottom: 0.1rem;
-          width: 4.6rem;
+          width: 5.9rem;
+          color: #888fa9;
+          font-size: 0.3rem;
+          margin-top: 1.68rem;
         }
       }
-    }
-    .introduction_start {
-      font-size: 0.4rem;
-      color: #ffffff;
-      width: 5.6rem;
-      margin: 0 auto;
-      height: 0.9rem;
-      background: #cccccc;
-      margin-top: 4.5rem;
-      border-radius: 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      .introduction_start {
+        font-size: 0.28rem;
+        color: #ffffff;
+        margin: 0 auto;
+        background: #cccccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5.9rem;
+        height: 0.88rem;
+        background: rgba(255, 70, 124, 1);
+        border-radius: 0.12rem;
+        margin-bottom: 1.84rem;
+      }
     }
   }
 }

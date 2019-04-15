@@ -7,11 +7,9 @@
                 <div class="login_input">
                     <input type="text" v-model="phoneNum" placeholder="请输入手机号码">
                 </div>
-                <div id="show">
-                    
-                </div>
+                 <div class="introduction_start" @click="getCode()">下一步</div> 
             </div>
-            <div class="introduction_start" @click="getCode()">下一步</div>
+          
         </div>
         
     </div>
@@ -20,6 +18,7 @@
 <script>
 //import navBar from "../../components/navigationBar";
 import navBar from "../../components/navBar";
+import { authen } from "../../common/js/api.js";
 
 import { Toast } from "vant";
 
@@ -27,45 +26,74 @@ export default {
   data() {
     return {
       phoneNum: "",
-      title: "手机号码验证"
+      title: "手机号码验证",
+      codeType: ""
     };
   },
   mounted: function() {
-    //Toast('提示内容');
+    console.log(this.$store.state.token);
   },
   methods: {
     goLink() {},
-    // testClick() {
-    //   let nowarr = {
-    //     deviceAddr: [{ deviceNum: "1e:24:23:3b:cc:6d", deviceSpace: "" }]
-    //   };
-    //   alert(nowarr.deviceAddr.length);
-    //   // let nowarr ={ "deviceAddr": [ { "deviceNum": "1e:24:23:3b:cc:6d", "deviceSpace": "" }, { "deviceNum": "7a:b6:4e:b7:bf:1d", "deviceSpace": "" } ]}
-    //   //         this.$bridge.callhandler('ObjC Echo', params, (data) => {
-    //   //     // 处理返回数据
-    //   // })
-    //   this.$bridge.callhandler("submitFromWeb", { param: "中文测试" }, function(
-    //     responseData
-    //   ) {
-    //     document.getElementById("show").innerHTML =
-    //       "send get responseData from java, data = " + responseData;
-    //   });
-    // },
     //输入手机号验证，跳转下一步
     getCode() {
       let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
       if (!myreg.test(this.phoneNum)) {
         Toast("请输入正确手机号码");
+        return false;
+      }
+      debugger;
+      let nowtoken = this.$store.state.token;
+      alert(nowtoken);
+      if (nowtoken == "" || nowtoken == undefined || nowtoken == null) {
+        let param = new Object();
+        param.userPhonenum = this.phoneNum;
+        param.token = "";
+        this.codeType = "register";
+        authen(param)
+          .then(res => {
+            console.log(res.response);
+            //let { data } = response;
+            //this.getCode = data.code;
+
+            this.$router.push({
+              path: "/loginCode",
+              query: { phoneNum: this.phoneNum, codeType: this.codeType }
+            });
+          })
+          .catch(error => {
+            Toast("网络错误，请重新请求");
+          });
       } else {
-        //先移除存储的电话号码唯一标识
-        localStorage.removeItem('loginPhone');
-        //将唯一的电话号码标识储存到
-        localStorage.setItem('loginPhone',this.phoneNum )
-        this.$store.commit('changeLogin',{Authorization:"15951813234"})
-        this.$router.push({
-          path: "/loginCode",
-          query: { phoneNum: this.phoneNum }
-        });
+        alert("*****");
+        let param = new Object();
+        param.userPhonenum = this.phoneNum;
+        param.token = nowtoken;
+        this.codeType = "login";
+        authen(param)
+          .then(res => {
+            if (res.response.errornum != "1") {
+              this.$router.push({
+                path: "/loginCode",
+                query: { phoneNum: this.phoneNum, codeType: this.codeType }
+              });
+            } else {
+              this.$router.push({
+                path: "/find",
+                query: { phoneNum: this.phoneNum, codeType: this.codeType }
+              });
+            }
+            //let { data } = response;
+            //this.getCode = data.code;
+
+            // this.$router.push({
+            //   path: "/loginCode",
+            //   query: { phoneNum: this.phoneNum,codeType:this.codeType }
+            // });
+          })
+          .catch(error => {
+            Toast("网络错误，请重新请求");
+          });
       }
     }
   },
@@ -81,45 +109,57 @@ export default {
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
-  background: #f2f2f2;
+  background: #222a45;
   .container_introduction {
     width: 100%;
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
-    background: #f2f2f2;
+    background: #222a45;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     .introduction_text {
       font-size: 0.4rem;
       color: #cccccc;
-      margin-top: 2.5rem;
+      width: 6.9rem;
+      height: 6.4rem;
+      background: rgba(41, 50, 83, 1);
+      border-radius: 0.12rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+
       .login_input {
         input {
           border: none;
           color: #cccccc;
-          background: #f2f2f2;
+          background: none;
+          text-align: center;
           outline: none;
-          border-bottom: #cccccc 1px solid;
+          border-bottom: #38446f 1px solid;
           padding-bottom: 0.1rem;
-          width: 4.6rem;
+          width: 5.9rem;
+          color: #888fa9;
+          font-size: 0.3rem;
+          margin-top: 1.68rem;
         }
       }
-    }
-    .introduction_start {
-      font-size: 0.4rem;
-      color: #ffffff;
-      width: 5.6rem;
-      margin: 0 auto;
-      height: 0.9rem;
-      background: #cccccc;
-      margin-top: 4.5rem;
-      border-radius: 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      .introduction_start {
+        font-size: 0.28rem;
+        color: #ffffff;
+        margin: 0 auto;
+        background: #cccccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5.9rem;
+        height: 0.88rem;
+        background: rgba(255, 70, 124, 1);
+        border-radius: 0.12rem;
+        margin-bottom: 1.84rem;
+      }
     }
   }
 }

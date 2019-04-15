@@ -1,0 +1,72 @@
+.van-dialog {
+  background: rgba(41, 50, 83, 1);
+  color: #9ea9d3;
+}
+.van-button--default {
+  color: #ff467c;
+  background-color: rgba(41, 50, 83, 1);
+  font-size: 0.34rem;
+}
+
+.van-tab--active {
+  color: #ff467c;
+}
+.van-tabs__nav {
+  background-color: #293253;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.van-tabbar {
+  background: #222a45 !important;
+}
+.van-tabbar-item {
+  color: #616c8a !important;
+}
+.van-tabbar-item--active {
+  color: #ff467c !important;
+}
+.van-hairline--top-bottom::after {
+  border-width: 0px 0px 1px 0px !important;
+}
+
+[class*="van-hairline"]::after {
+  border: 0.02rem solid #000;
+}
+.van-popup {
+  width: 6.3rem;
+  height: 8.72rem;
+  background: rgba(41, 50, 83, 1);
+  border-radius: 0.12rem;
+  font-size: 0.24rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(136, 143, 169, 1);
+  line-height: 0.34rem;
+  padding: 0.3rem;
+  overflow: visible;
+}
+.van-icon-close {
+  position: absolute;
+  top: -0.68rem;
+  right: 0.1rem;
+}
+.van-nav-bar {
+  background-color: #222a45;
+}
+.van-nav-bar__title {
+  color: #fff;
+}
+.van-nav-bar__text:active {
+  background: none;
+}
